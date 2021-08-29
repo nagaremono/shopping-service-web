@@ -5041,6 +5041,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"react-hook-form@npm:^7.14.0":
+  version: 7.14.0
+  resolution: "react-hook-form@npm:7.14.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17
+  checksum: 55bf74f858bb71cdee9fca2c3479053ce7f0df617973344c0b6faec110b73ced18e42023264f88ca552fdf4d87dcdacb3464e20b4e66b927a6abaee511b6685a
+  languageName: node
+  linkType: hard
+
 "react-is@npm:17.0.2":
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
@@ -5434,6 +5443,7 @@ resolve@^2.0.0-next.3:
     prettier: ^2.3.2
     react: 17.0.2
     react-dom: 17.0.2
+    react-hook-form: ^7.14.0
     typescript: 4.4.2
   languageName: unknown
   linkType: soft
