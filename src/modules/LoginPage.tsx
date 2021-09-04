@@ -7,26 +7,45 @@ import {
   Heading,
   Input,
   FormErrorMessage,
+  useToast,
 } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import { useForm } from 'react-hook-form';
+import useLoginMutation, { LoginParams } from '../hooks/useLoginMutation';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 export const LoginPage: NextPage = () => {
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
+    reset,
   } = useForm({
     mode: 'onBlur',
   });
+  const errorToast = useToast();
+  const { mutateAsync } = useLoginMutation();
+  const router = useRouter();
 
-  const onSubmit = (values: any) => {
-    return new Promise<void>((resolve, _) => {
-      setTimeout(() => {
-        console.log(JSON.stringify(values, null, 2));
-        resolve();
-      }, 3000);
-    });
+  useEffect(() => {
+    router.prefetch('/');
+  }, [router]);
+
+  const onSubmit = async ({ email, password }: LoginParams) => {
+    try {
+      await mutateAsync({ email, password });
+      router.replace('/');
+    } catch (error: any) {
+      errorToast({
+        title: 'Authentication failed',
+        description: error.response?.data.message,
+        variant: 'left-accent',
+        status: 'error',
+        isClosable: true,
+      });
+    }
+    reset();
   };
   return (
     <Container px={[12]} mt={8}>
