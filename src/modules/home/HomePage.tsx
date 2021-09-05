@@ -1,5 +1,7 @@
+import { Container } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import { useMeQuery } from '../../hooks/useMeQuery';
+import { Header } from '../../shared/components/Header';
 import { ProductsController } from './ProductsController';
 
 export const HomePage: NextPage = () => {
@@ -7,8 +9,10 @@ export const HomePage: NextPage = () => {
 
   return (
     <>
-      <h1>{data?.username ? `hello ${data.username}` : 'hello world'}</h1>
-      <ProductsController />
+      <Header />
+      <Container my={8} maxW="80%" centerContent>
+        <ProductsController />
+      </Container>
     </>
   );
 };

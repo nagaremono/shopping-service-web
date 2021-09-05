@@ -9,12 +9,10 @@ interface ProductGridProps {
 
 export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
   return (
-    <Container maxW="80%" centerContent>
-      <VStack spacing={6} w="100%">
-        {products.map((p) => (
-          <ProductCard product={p} key={p.id} />
-        ))}
-      </VStack>
-    </Container>
+    <VStack spacing={6} w="100%">
+      {products.map((p) => (
+        <ProductCard product={p} key={p.id} />
+      ))}
+    </VStack>
   );
 };
